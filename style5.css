@@ -33,7 +33,7 @@ body{
 .link-a-1{
     background-color: #bb09ac;
     border: #e605d3 solid 2px;
-    color: white;
+    color: rgb(135,135,136);
     font-weight: bold;
     padding: 10px;
 }
