@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de cadastro</title>
+</head>
+
+<body style="color:white; background-color: rgb(50, 65, 65); margin: 2%;">
+    <h1>Exemplo de formulario de casdastro</h1>
+    <form id="cadastroform">
+        <label for="nome">Nome :</label><input id="nome" type="text">
+        <form>
+            <label for="endereco">Endereço:</label><input id="endereco" type="text">
+            <label for="telefone">Telefone:</label><input id="telefone" type="fone">
+            
+            <button onclick="Cadastrar">Cadastrar</button>
+        </form>
+        <script>
+            const formulario = document.getElementById('cadastroform');
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const telefone = document.getElementById('telefone').value;
+            const mensagem = document.getElementById('mensagem')
+            mensagem.textContent `cadastro realizado com sucesso: Nome:${nome}, Endereco:${endereco}, Telefone${telefone}`; 
+        </script>
+        
+</body>
+
+</html>
