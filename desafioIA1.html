@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pesquisa</title>
+    <style>
+        /* Aplicando gradiente no fundo da página */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #FFD700, #808080); /* amarelo e cinza */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Mensagem de agradecimento */
+        .thank-you-message {
+            display: none;
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form id="pesquisaForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+        </div>
+        <div class="form-group">
+            <label for="escolaridade">Escolaridade:</label>
+            <select id="escolaridade" name="escolaridade" required>
+                <option value="">Selecione</option>
+                <option value="fundamental">Ensino Fundamental</option>
+                <option value="medio">Ensino Médio</option>
+                <option value="superior">Ensino Superior</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        </div>
+        <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Selecione</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="submitForm()">Enviar</button>
+        </div>
+    </form>
+    
+    <!-- Mensagem de agradecimento que aparece após envio -->
+    <div class="thank-you-message" id="thankYouMessage">
+        Obrigado por responder o formulário!
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        // Capturando os dados do formulário
+        const nome = document.getElementById('nome').value;
+        const telefone = document.getElementById('telefone').value;
+        const escolaridade = document.getElementById('escolaridade').value;
+        const cidade = document.getElementById('cidade').value;
+        const sexo = document.getElementById('sexo').value;
+
+        // Exibindo os dados no console para fins de teste
+        console.log("Nome:", nome);
+        console.log("Telefone:", telefone);
+        console.log("Escolaridade:", escolaridade);
+        console.log("Cidade:", cidade);
+        console.log("Sexo:", sexo);
+
+        // Exibindo a mensagem de agradecimento
+        document.getElementById('thankYouMessage').style.display = 'block';
+        
+        // Resetando o formulário após o envio
+        document.getElementById('pesquisaForm').reset();
+    }
+</script>
+
+</body>
+</html>
