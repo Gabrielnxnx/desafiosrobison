@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <style>
+        /* Estilo do fundo gradiente */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00008B, #FFD700); /* Azul escuro para amarelo ouro */
+        }
+
+        /* Container da galeria */
+        .gallery-container {
+            text-align: center;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Imagem da galeria */
+        .gallery-image {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilo dos botões */
+        .gallery-buttons {
+            margin-top: 15px;
+        }
+
+        .gallery-buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #00008B; /* Azul escuro */
+            color: #FFD700; /* Amarelo ouro */
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery-buttons button:hover {
+            background-color: #FFD700;
+            color: #00008B;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container da galeria -->
+    <div class="gallery-container">
+        <!-- Imagem exibida -->
+        <img id="galleryImage" class="gallery-image" src="frente.png" alt="Galeria de Fotos">
+
+        <!-- Botões de navegação -->
+        <div class="gallery-buttons">
+            <button onclick="previousImage()">Anterior</button>
+            <button onclick="nextImage()">Próxima</button>
+        </div>
+    </div>
+
+    <script>
+        // Lista de URLs das imagens
+        const images = [
+            'frente.png',
+            'tras.png',
+        ];
+
+        let currentIndex = 0; // Índice da imagem atual
+
+        // Função para exibir a imagem anterior
+        function previousImage() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            document.getElementById('galleryImage').src = images[currentIndex];
+        }
+
+        // Função para exibir a próxima imagem
+        function nextImage() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            document.getElementById('galleryImage').src = images[currentIndex];
+        }
+    </script>
+
+</body>
+</html>
