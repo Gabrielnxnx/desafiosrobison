@@ -1,105 +1,226 @@
 <!DOCTYPE html>
-<html lang="Pt-Br">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula de Front-End</title>
+    <title>Meus Links do GitHub</title>
+    <style>
+        /* Estilo geral do corpo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000, #1a1a1a); /* Fundo escuro gamer */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        /* Estilo do cabeçalho */
+        header {
+            width: 100%;
+            padding: 20px 0;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* Fundo em gradiente neon */
+            box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; /* Efeito de luz neon */
+            text-align: center;
+        }
 
-    <link rel="stylesheet" href="style5.css">
+        header h1 {
+            font-size: 2.5rem;
+            color: #00ffcc;
+            text-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
+        }
 
+        /* Links do menu no cabeçalho */
+        .links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .links a:hover {
+            color: #00ffcc;
+        }
+
+        .links a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: #00ffcc;
+            transition: width 0.3s ease;
+            margin: auto;
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        /* Galeria de botões */
+        .button-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        /* Botões com efeito neon */
+        .button-link {
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00ffcc, #0033cc); /* Gradiente de luz neon */
+            color: #fff;
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 10px #00ffcc, 0 0 20px #0033cc; /* Efeito neon */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #00ffcc, 0 0 30px #0033cc; /* Intensifica a luz no hover */
+        }
+
+        .button-link i {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
-
 <body>
-
-    <header class="bg-light header">
-        <section>
-            <span class="span-1">Aprenda</span>
-            <span class="span-2">Na Prática</span>
-            
-            <section class="links">
-                <a href="index.html">Inicio</a>
-                <a href="Polo.html">Escola Polo</a>
-                <a href="Professor.html">Professor</a>
-                <a href="Arquivos.html">Arquivos</a>
-                <a href="Exemplos.html">Jogos</a>
-            </section>
-        </section>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Meus Links do GitHub</h1>
+        <div class="links">
+            <a href="index.html">Início</a>
+            <a href="Polo.html">Escola Polo</a>
+            <a href="Professor.html">Professor</a>
+            <a href="Arquivos.html">Arquivos</a>
+            <a href="Exemplos.html">Jogos</a>
+        </div>
     </header>
 
+    <!-- Galeria de Botões -->
     <main>
-        <! USANDO bootstrap>
-            <div class="container text-center">
-                <div class="row">
-
-                    <div class="col">
-                        <section class="secao-1">
-                            <h3>Prof. Robinho</h3>
-                            <p></p>
-                                <a href="desafio 1.html" class="btn btn-info link-a-1">Desafio 1</a>
-                                <a href="desafio 2.html" class="btn btn-info link-a-1">Desafio 2</a>
-                                <a href="desafio 3.html" class="btn btn-info link-a-1">Desafio 3</a>
-                                <a href="desafio 4.html" class="btn btn-info link-a-1">Desafio 4</a>
-                                <a href="desafio 5.html" class="btn btn-info link-a-1">Desafio 5</a>
-                                <a href="desafio 6.html" class="btn btn-info link-a-1">Desafio 6</a>
-                                <a href="desafio 7.html" class="btn btn-info link-a-1">Desafio 7</a>
-                                <a href="desafio 8.html" class="btn btn-info link-a-1">Desafio 8</a>
-                                <a href="desafio 9.html" class="btn btn-info link-a-1">Desafio 9</a>
-                                <a href="desafio 10.html" class="btn btn-info link-a-1">Desafio 10</a>
-                                <a href="desafio11.html" class="btn btn-info link-a-1">Desafio 11</a>
-                                <a href="desafio12.html" class="btn btn-info link-a-1">Desafio 12</a>
-                                <a href="desafio13.html" class="btn btn-info link-a-1">Desafio 13</a>
-                                <a href="desafio14.html" class="btn btn-info link-a-1">Desafio 14</a>
-                                <a href="desafio15.html" class="btn btn-info link-a-1">Desafio 15</a>
-                                <a href="desafio16.html" class="btn btn-info link-a-1">Desafio 16</a>
-                                <a href="desafio16B.html" class="btn btn-info link-a-1">Desafio 16B</a>
-                                <a href="desafio17.html" class="btn btn-info link-a-1">Desafio 17</a>
-                                <a href="desafio18.html" class="btn btn-info link-a-1">Desafio 18</a>
-                                <a href="desafioIA1.html" class="btn btn-info link-a-1">DesafioIA1</a>
-                                <a href="desafioIA2.html" class="btn btn-info link-a-1">DesafioIA2</a>
-                                <a href="desafioIA3.html" class="btn btn-info link-a-1">DesafioIA3</a>
-                                <a href="desafioIA4.html" class="btn btn-info link-a-1">DesafioIA4</a>
-                                <a href="DesafioIA4-2.html" class="btn btn-info link-a-1">DesafioIA4-2</a>
-                                <a href="desafioshampoo.html" class="btn btn-info link-a-1">DesafioShampoo</a>
-                        </section>
-                    </div>
-
-                    <div class="col">
-                        <section class="secao-2">
-                            <div class="img">
-                                <img src="morris.webp" alt="">
-                            </div>
-                        </section>
-                    </div>
-
-                    <div class="col">
-                        <section class="secao-3">
-                            <p>
-                               
-                            </p>
-                            <img class="img-col" src="www.webp" alt="">
-                        </section>
-                    </div>
-
-                    <div class="col">
-                        <section class="secao-4">
-                            <p>
-                            </p>
-                            <img class="img-col" src="tela.png" alt="">
-                        </section>
-                    </div>
-
-                </div>
-            </div>
-
+        <div class="button-gallery">
+            <!-- Exemplo de botão para o perfil GitHub -->
+            <h1>Meus Links do GitHub</h1> <P>
+            
+            </P>
+    
+        <!-- Exemplo de botão para repositório específico -->
+        <a href="https://github.com/seu-usuario/repo1" class="button-link" target="_blank">
+            <i>📁</i> Desafio 1
+        </a>
+    
+        <!-- Outro exemplo de repositório -->
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 3
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 4
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 5
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 6
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 7
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 8
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 9
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 10
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 11
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 12
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 13
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 14
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 15
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 16
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 16B
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 17
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 18
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio 19
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio Shampoo
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio IA1
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio IA2
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> Desafio IA3
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> CalcularDivida
+        </a>
+    
+        <a href="https://github.com/seu-usuario/repo2" class="button-link" target="_blank">
+            <i>📂</i> CalcularImposto
+        </a>
     </main>
-
 </body>
-
 </html>
