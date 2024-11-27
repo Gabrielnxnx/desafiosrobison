@@ -1,127 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Dívida com Juros Compostos</title>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Dívida do Cartão de Crédito</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #820cbd, #fcfcfc); /* Fundo gradiente */
-            color: #333;
-        }
+      /* styles.css */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(
+          135deg,
+          #ffffff,
+          #800080
+        ); /* Gradiente branco e roxo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        color: #333;
+      }
 
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            text-align: center;
-        }
+      .container {
+        background: #fff;
+        padding: 20px;
+        border: 5px solid #800080; /* Borda roxa */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 90%;
+        max-width: 800px;
+      }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+      h1,
+      h2 {
+        color: #800080; /* Roxo para títulos */
+      }
 
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+      input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #800080; /* Borda roxa */
+        border-radius: 5px;
+      }
 
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+      button {
+        padding: 10px 20px;
+        background: #800080; /* Fundo roxo */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #450558;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+      button:hover {
+        background: #9932cc; /* Roxo mais claro no hover */
+      }
 
-        .form-group button:hover {
-            background-color: #6f3c8c;
-        }
+      .result p {
+        margin: 10px 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+      }
 
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      thead th {
+        background: #800080; /* Cabeçalho roxo */
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+      }
+
+      tbody tr:nth-child(even) {
+        background: #f2f2f2; /* Linhas pares com cinza claro */
+      }
+
+      tbody tr:hover {
+        background: #e0e0e0; /* Hover nas linhas */
+      }
+
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid #ddd; /* Linhas suaves entre células */
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <h1>Calculadora de Dívida</h1>
+      <h1>Calculadora de Dívida do Cartão de Crédito</h1>
+      <form id="creditCardForm">
+        <label for="debtValue">Valor da Dívida Inicial (R$):</label>
+        <input
+          type="number"
+          id="debtValue"
+          placeholder="Digite o valor da dívida"
+          required
+        />
 
-        <!-- Formulário de entrada de dados -->
-        <div class="form-group">
-            <label for="valorDivida">Valor da Dívida (R$):</label>
-            <input type="number" id="valorDivida" placeholder="Ex: 1000" required>
-        </div>
-        <div class="form-group">
-            <label for="mesesAtraso">Meses de Atraso:</label>
-            <input type="number" id="mesesAtraso" placeholder="Ex: 6" required>
-        </div>
-        <div class="form-group">
-            <label for="taxaJuros">Taxa de Juros (%) por Mês:</label>
-            <input type="number" id="taxaJuros" placeholder="Ex: 2" step="0.01" required>
-        </div>
+        <label for="monthsLate">Meses em Atraso:</label>
+        <input
+          type="number"
+          id="monthsLate"
+          placeholder="Digite os meses em atraso"
+          required
+        />
 
-        <!-- Botão para calcular -->
-        <div class="form-group">
-            <button onclick="calcularDivida()">Calcular Dívida</button>
-        </div>
+        <label for="interestRate">Taxa de Juros Mensal (%):</label>
+        <input
+          type="number"
+          id="interestRate"
+          placeholder="Digite a taxa de juros"
+          required
+        />
 
-        <!-- Exibição do resultado -->
-        <div class="result" id="resultado"></div>
+        <button type="button" onclick="calculateDebt()">
+          Calcular e Salvar
+        </button>
+      </form>
+
+      <div class="result">
+        <p id="totalInterest">Total de Juros: R$ 0.00</p>
+        <p id="finalDebt">Valor Final da Dívida: R$ 0.00</p>
+      </div>
+
+      <h2>Histórico de Cálculos</h2>
+      <table id="historyTable">
+        <thead>
+          <tr>
+            <th>Valor Inicial</th>
+            <th>Meses</th>
+            <th>Taxa de Juros (%)</th>
+            <th>Juros Acumulados</th>
+            <th>Valor Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas serão adicionadas dinamicamente -->
+        </tbody>
+      </table>
     </div>
-
     <script>
-        // Função para calcular a dívida com juros compostos
-        function calcularDivida() {
-            const valorDivida = parseFloat(document.getElementById('valorDivida').value);
-            const mesesAtraso = parseInt(document.getElementById('mesesAtraso').value);
-            const taxaJuros = parseFloat(document.getElementById('taxaJuros').value) / 100;
+      // script.js
+      function calculateDebt() {
+        const debtValue = parseFloat(
+          document.getElementById("debtValue").value
+        );
+        const monthsLate = parseInt(
+          document.getElementById("monthsLate").value
+        );
+        const interestRate = parseFloat(
+          document.getElementById("interestRate").value
+        );
 
-            // Validação dos dados de entrada
-            if (isNaN(valorDivida) || isNaN(mesesAtraso) || isNaN(taxaJuros)) {
-                alert("Por favor, insira valores válidos para todos os campos.");
-                return;
-            }
-
-            // Cálculo de juros compostos
-            const valorFinal = valorDivida * Math.pow((1 + taxaJuros), mesesAtraso);
-
-            // Exibir o resultado formatado
-            document.getElementById('resultado').innerText = 
-                `Valor Total da Dívida: R$ ${valorFinal.toFixed(2)}`;
+        if (isNaN(debtValue) || isNaN(monthsLate) || isNaN(interestRate)) {
+          alert("Por favor, preencha todos os campos corretamente.");
+          return;
         }
-    </script>
 
-</body>
+        // Calcular juros compostos: FV = PV * (1 + i)^n
+        const monthlyRate = interestRate / 100;
+        const finalDebt = debtValue * Math.pow(1 + monthlyRate, monthsLate);
+        const totalInterest = finalDebt - debtValue;
+
+        // Atualizar resultados na interface
+        document.getElementById(
+          "totalInterest"
+        ).textContent = `Total de Juros: R$ ${totalInterest.toFixed(2)}`;
+        document.getElementById(
+          "finalDebt"
+        ).textContent = `Valor Final da Dívida: R$ ${finalDebt.toFixed(2)}`;
+
+        // Adicionar informações na tabela
+        const tableBody = document
+          .getElementById("historyTable")
+          .querySelector("tbody");
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML = `
+        <td>R$ ${debtValue.toFixed(2)}</td>
+        <td>${monthsLate}</td>
+        <td>${interestRate}%</td>
+        <td>R$ ${totalInterest.toFixed(2)}</td>
+        <td>R$ ${finalDebt.toFixed(2)}</td>
+    `;
+
+        tableBody.appendChild(newRow);
+
+        // Limpar os campos do formulário
+        document.getElementById("debtValue").value = "";
+        document.getElementById("monthsLate").value = "";
+        document.getElementById("interestRate").value = "";
+      }
+    </script>
+  </body>
 </html>
