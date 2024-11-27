@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Imposto</title>
+    <style>
+      /* styles.css */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #800080, #ffffff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        background: #fff;
+        padding: 20px;
+        border: 5px solid #800080;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 90%;
+        max-width: 800px;
+      }
+
+      h1,
+      h2 {
+        color: #800080;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #800080;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background: #800080;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: #9932cc;
+      }
+
+      .result p {
+        margin: 10px 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      thead th {
+        background: #800080;
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+      }
+
+      tbody tr:nth-child(even) {
+        background: #f2f2f2;
+      }
+
+      tbody tr:hover {
+        background: #e0e0e0;
+      }
+
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculadora de Imposto</h1>
+      <form id="taxForm">
+        <label for="employeeName">Nome do Funcionário:</label>
+        <input
+          type="text"
+          id="employeeName"
+          placeholder="Digite o nome"
+          required
+        />
+
+        <label for="grossValue">Valor Bruto (R$):</label>
+        <input
+          type="number"
+          id="grossValue"
+          placeholder="Digite o valor bruto"
+          required
+        />
+
+        <button type="button" onclick="calculateAndSave()">
+          Calcular e Salvar
+        </button>
+      </form>
+      <div class="result">
+        <p id="taxAmount">Imposto: R$ 0.00</p>
+        <p id="finalValue">Valor Final: R$ 0.00</p>
+      </div>
+      <h2>Histórico de Cálculos</h2>
+      <table id="historyTable">
+        <thead>
+          <tr>
+            <th>Funcionário</th>
+            <th>Valor Bruto</th>
+            <th>Imposto (%)</th>
+            <th>Valor do Imposto</th>
+            <th>Valor Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas serão adicionadas aqui -->
+        </tbody>
+      </table>
+    </div>
+    <script>
+      // script.js
+      function calculateAndSave() {
+        const employeeName = document
+          .getElementById("employeeName")
+          .value.trim();
+        const grossValue = parseFloat(
+          document.getElementById("grossValue").value
+        );
+
+        if (!employeeName || isNaN(grossValue)) {
+          alert("Por favor, preencha todos os campos corretamente.");
+          return;
+        }
+
+        let taxRate = 0;
+
+        // Determinar a alíquota com base no valor bruto
+        if (grossValue >= 5000) {
+          taxRate = 17.5;
+        } else if (grossValue >= 4000) {
+          taxRate = 12;
+        } else if (grossValue >= 3000) {
+          taxRate = 7.5;
+        } else if (grossValue >= 1800) {
+          taxRate = 3.5;
+        } else {
+          taxRate = 0;
+        }
+
+        // Calcular o imposto e o valor final
+        const taxAmount = (grossValue * taxRate) / 100;
+        const finalValue = grossValue - taxAmount;
+
+        // Atualizar os resultados no HTML
+        document.getElementById(
+          "taxAmount"
+        ).textContent = `Imposto: R$ ${taxAmount.toFixed(2)}`;
+        document.getElementById(
+          "finalValue"
+        ).textContent = `Valor Final: R$ ${finalValue.toFixed(2)}`;
+
+        // Adicionar os dados na tabela
+        const tableBody = document
+          .getElementById("historyTable")
+          .querySelector("tbody");
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML = `
+        <td>${employeeName}</td>
+        <td>R$ ${grossValue.toFixed(2)}</td>
+        <td>${taxRate}%</td>
+        <td>R$ ${taxAmount.toFixed(2)}</td>
+        <td>R$ ${finalValue.toFixed(2)}</td>
+    `;
+
+        tableBody.appendChild(newRow);
+
+        // Limpar os campos do formulário
+        document.getElementById("employeeName").value = "";
+        document.getElementById("grossValue").value = "";
+      }
+    </script>
+  </body>
+</html>
