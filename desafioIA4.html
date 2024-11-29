@@ -1,213 +1,111 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Dívida do Cartão de Crédito</title>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Salário com Imposto</title>
     <style>
-      /* styles.css */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(
-          135deg,
-          #ffffff,
-          #800080
-        ); /* Gradiente branco e roxo */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        color: #333;
-      }
-
-      .container {
-        background: #fff;
-        padding: 20px;
-        border: 5px solid #800080; /* Borda roxa */
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 90%;
-        max-width: 800px;
-      }
-
-      h1,
-      h2 {
-        color: #800080; /* Roxo para títulos */
-      }
-
-      label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-      }
-
-      input {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 2px solid #800080; /* Borda roxa */
-        border-radius: 5px;
-      }
-
-      button {
-        padding: 10px 20px;
-        background: #800080; /* Fundo roxo */
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      button:hover {
-        background: #9932cc; /* Roxo mais claro no hover */
-      }
-
-      .result p {
-        margin: 10px 0;
-        font-size: 1.2em;
-        font-weight: bold;
-        color: #333;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-
-      thead th {
-        background: #800080; /* Cabeçalho roxo */
-        color: #fff;
-        padding: 10px;
-        text-align: left;
-      }
-
-      tbody tr:nth-child(even) {
-        background: #f2f2f2; /* Linhas pares com cinza claro */
-      }
-
-      tbody tr:hover {
-        background: #e0e0e0; /* Hover nas linhas */
-      }
-
-      td,
-      th {
-        padding: 10px;
-        border: 1px solid #ddd; /* Linhas suaves entre células */
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Calculadora de Dívida do Cartão de Crédito</h1>
-      <form id="creditCardForm">
-        <label for="debtValue">Valor da Dívida Inicial (R$):</label>
-        <input
-          type="number"
-          id="debtValue"
-          placeholder="Digite o valor da dívida"
-          required
-        />
-
-        <label for="monthsLate">Meses em Atraso:</label>
-        <input
-          type="number"
-          id="monthsLate"
-          placeholder="Digite os meses em atraso"
-          required
-        />
-
-        <label for="interestRate">Taxa de Juros Mensal (%):</label>
-        <input
-          type="number"
-          id="interestRate"
-          placeholder="Digite a taxa de juros"
-          required
-        />
-
-        <button type="button" onclick="calculateDebt()">
-          Calcular e Salvar
-        </button>
-      </form>
-
-      <div class="result">
-        <p id="totalInterest">Total de Juros: R$ 0.00</p>
-        <p id="finalDebt">Valor Final da Dívida: R$ 0.00</p>
-      </div>
-
-      <h2>Histórico de Cálculos</h2>
-      <table id="historyTable">
-        <thead>
-          <tr>
-            <th>Valor Inicial</th>
-            <th>Meses</th>
-            <th>Taxa de Juros (%)</th>
-            <th>Juros Acumulados</th>
-            <th>Valor Final</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Linhas serão adicionadas dinamicamente -->
-        </tbody>
-      </table>
-    </div>
-    <script>
-      // script.js
-      function calculateDebt() {
-        const debtValue = parseFloat(
-          document.getElementById("debtValue").value
-        );
-        const monthsLate = parseInt(
-          document.getElementById("monthsLate").value
-        );
-        const interestRate = parseFloat(
-          document.getElementById("interestRate").value
-        );
-
-        if (isNaN(debtValue) || isNaN(monthsLate) || isNaN(interestRate)) {
-          alert("Por favor, preencha todos os campos corretamente.");
-          return;
+        /* Gradiente de fundo */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #350356, #ffffff); /* Fundo gradiente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
-        // Calcular juros compostos: FV = PV * (1 + i)^n
-        const monthlyRate = interestRate / 100;
-        const finalDebt = debtValue * Math.pow(1 + monthlyRate, monthsLate);
-        const totalInterest = finalDebt - debtValue;
+        /* Estilos do contêiner principal */
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
 
-        // Atualizar resultados na interface
-        document.getElementById(
-          "totalInterest"
-        ).textContent = `Total de Juros: R$ ${totalInterest.toFixed(2)}`;
-        document.getElementById(
-          "finalDebt"
-        ).textContent = `Valor Final da Dívida: R$ ${finalDebt.toFixed(2)}`;
+        h1 {
+            text-align: center;
+            color: #63087c;
+        }
 
-        // Adicionar informações na tabela
-        const tableBody = document
-          .getElementById("historyTable")
-          .querySelector("tbody");
-        const newRow = document.createElement("tr");
+        label, input {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
 
-        newRow.innerHTML = `
-        <td>R$ ${debtValue.toFixed(2)}</td>
-        <td>${monthsLate}</td>
-        <td>${interestRate}%</td>
-        <td>R$ ${totalInterest.toFixed(2)}</td>
-        <td>R$ ${finalDebt.toFixed(2)}</td>
-    `;
+        button {
+            background-color: #5b087c;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
 
-        tableBody.appendChild(newRow);
+        button:hover {
+            background-color: #54137c;
+        }
 
-        // Limpar os campos do formulário
-        document.getElementById("debtValue").value = "";
-        document.getElementById("monthsLate").value = "";
-        document.getElementById("interestRate").value = "";
-      }
-    </script>
-  </body>
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Calculadora de Imposto</h1>
+    <label for="nome">Nome do Funcionário:</label>
+    <input type="text" id="nome" placeholder="Digite o nome">
+
+    <label for="salario">Salário Total:</label>
+    <input type="number" id="salario" placeholder="Digite o salário" step="0.01">
+
+    <button onclick="calcularSalario()">Calcular Salário com Imposto</button>
+
+    <div class="result" id="resultado"></div>
+</div>
+
+<script>
+    function calcularSalario() {
+        const nome = document.getElementById("nome").value;
+        const salario = parseFloat(document.getElementById("salario").value);
+
+        let imposto = 0;
+
+        if (salario >= 5000) {
+            imposto = 17.5;
+        } else if (salario >= 4000) {
+            imposto = 12;
+        } else if (salario >= 3000) {
+            imposto = 7.5;
+        } else if (salario >= 1800) {
+            imposto = 3.5;
+        } else {
+            imposto = 0;
+        }
+
+        // Calcula o valor do imposto e o salário após o imposto
+        const valorImposto = (imposto / 100) * salario;
+        const salarioFinal = salario - valorImposto;
+
+        // Exibe o resultado
+        document.getElementById("resultado").innerHTML = `
+            Funcionário: ${nome} <br>
+            Salário Total: R$ ${salario.toFixed(2)} <br>
+            Imposto (${imposto}%): R$ ${valorImposto.toFixed(2)} <br>
+            Salário com Imposto: R$ ${salarioFinal.toFixed(2)}
+        `;
+    }
+</script>
+
+</body>
 </html>
